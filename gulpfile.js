@@ -11,14 +11,14 @@ const plumber = require('gulp-plumber');
 const concat = require('gulp-concat');
 
 gulp.task('styles', () => {
-	return gulp.src('./src/styles/**/*.scss')
+	return gulp.src('./dev/styles/**/*.scss')
 		.pipe(sass().on('error', sass.logError))
 		.pipe(concat('style.css'))
 		.pipe(gulp.dest('./public/styles'))
 });
 
 gulp.task('js', () => {
-	browserify('src/scripts/app.js', {debug: true})
+	browserify('dev/scripts/app.js', {debug: true})
 		.transform('babelify', {
 			sourceMaps: true,
 			presets: ['es2015','react']
@@ -43,7 +43,7 @@ gulp.task('bs', () => {
 });
 
 gulp.task('default', ['js','bs', 'styles'], () => {
-	gulp.watch('src/**/*.js',['js']);
-	gulp.watch('src/**/*.scss',['styles']);
+	gulp.watch('dev/**/*.js',['js']);
+	gulp.watch('dev/**/*.scss',['styles']);
 	gulp.watch('./public/styles/style.css',reload);
 });
