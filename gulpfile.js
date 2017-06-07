@@ -18,7 +18,7 @@ gulp.task('styles', () => {
 });
 
 gulp.task('js', () => {
-	browserify('dev/scripts/app.js', {debug: true})
+	return browserify('dev/scripts/app.js', {debug: true})
 		.transform('babelify', {
 			sourceMaps: true,
 			presets: ['es2015','react']
@@ -35,14 +35,14 @@ gulp.task('js', () => {
 });
 
 gulp.task('bs', () => {
-	browserSync.init({
+	return browserSync.init({
 		server: {
 			baseDir: './'
 		}
 	});
 });
 
-gulp.task('default', ['js','bs', 'styles'], () => {
+gulp.task('default', ['bs','js','styles'], () => {
 	gulp.watch('dev/**/*.js',['js']);
 	gulp.watch('dev/**/*.scss',['styles']);
 	gulp.watch('./public/styles/style.css',reload);
