@@ -28,6 +28,8 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
-    "node-sass": "^4.7.1"
+    "firebase": "^4.10.0",
+    "node-sass": "^4.7.1",
+    "react-native-google-signin": "^0.12.0"
   }
 }
